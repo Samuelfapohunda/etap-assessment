@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormConfig } from './config/typeorm.config';
 
 @Module({
-  imports: [
+  imports: [ 
     AuthModule,
     SubjectModule,
     TopicModule,

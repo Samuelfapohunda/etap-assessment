@@ -18,16 +18,19 @@ export const typeormConfig: DataSourceOptions = {
   database: DB_NAME,
   namingStrategy: new SnakeNamingStrategy(),
   extra: {
-    ssl:
-      process.env.NODE_ENV === 'production' ||
-      process.env.NODE_ENV === 'staging' ||
-      process.env.NODE_ENV === 'development',
+    // ssl:
+    //   process.env.NODE_ENV === 'production' ||
+    //   process.env.NODE_ENV === 'staging' ||
+    //   process.env.NODE_ENV === 'development',
+    ssl: {
+      rejectUnauthorized: false // You might need this if you're using a self-signed certificate
+    }
   },
   ssl: true,
 };
 
 export const AppDataSource = new DataSource(typeormConfig);
-
+ 
 AppDataSource.initialize().then((r) =>
   Logger.log('[DATABASE] connection successful'),
 );
